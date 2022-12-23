@@ -56,7 +56,7 @@ public class ProductServiceIT {
 		
 		PageRequest pageRequest = PageRequest.of(0, 10);
 		
-		Page<ProductDTO> result = service.findAllPaged(pageRequest);
+		Page<ProductDTO> result = service.findAllPaged(0L, "", pageRequest);
 		
 		Assertions.assertFalse(result.isEmpty()); // Verifica se a página está vazia
 		Assertions.assertEquals(0, result.getNumber()); // Verifica se a página é a página 0
@@ -69,7 +69,7 @@ public class ProductServiceIT {
 		
 		PageRequest pageRequest = PageRequest.of(50, 10);
 		
-		Page<ProductDTO> result = service.findAllPaged(pageRequest);
+		Page<ProductDTO> result = service.findAllPaged(0L, "", pageRequest);
 		
 		Assertions.assertTrue(result.isEmpty()); //Confirma que a página não existe
 	}
@@ -79,7 +79,7 @@ public class ProductServiceIT {
 		
 		PageRequest pageRequest = PageRequest.of(0, 10, Sort.by("name"));
 		
-		Page<ProductDTO> result = service.findAllPaged(pageRequest);
+		Page<ProductDTO> result = service.findAllPaged(0L, "", pageRequest);
 		
 		Assertions.assertFalse(result.isEmpty()); // Verifica se a página está vazia
 		Assertions.assertEquals("Macbook Pro", result.getContent().get(0).getName()); // Apenas os 3 primeiros
