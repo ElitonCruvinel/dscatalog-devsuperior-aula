@@ -3,7 +3,6 @@ import ProductCard from 'components/ProductCard';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from 'types/product';
-import { AxiosParams } from 'types/vendor/axios';
 import { SpringPage } from 'types/vendor/spring';
 import { BASE_URL } from 'util/requests';
 import axios from 'axios';
@@ -16,9 +15,10 @@ const Catalog = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const params: AxiosParams = {
+    const params = {
       method: 'GET',
-      url: `${BASE_URL}/products`,
+      url: "/products",
+      baseURL: BASE_URL,
       params: {
         page: 0,
         size: 12,
