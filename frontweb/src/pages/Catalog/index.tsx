@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from 'types/product';
 import { SpringPage } from 'types/vendor/spring';
-import { BASE_URL } from 'util/requests';
-import axios from 'axios';
+import { BASE_URL, requestBackend } from 'util/requests';
+import axios, { AxiosRequestConfig } from 'axios';
 import CardLoader from './CardLoader';
 
 import './styles.css';
@@ -15,18 +15,22 @@ const Catalog = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    const params = {
+    
+    /*const params = { -> Assim estava funcionando*/
+
+    const params: AxiosRequestConfig = {
       method: 'GET',
       url: "/products",
       baseURL: BASE_URL,
       params: {
         page: 0,
         size: 12,
-      },
+      }
     };
 
     setIsLoading(true);
-    axios(params)
+    /*axios(params) -> Assim estava funcionando*/
+    requestBackend(params)
       .then((response) => {
         setPage(response.data);
       })
