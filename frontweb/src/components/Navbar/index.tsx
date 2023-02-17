@@ -3,14 +3,11 @@ import '@popperjs/core';
 import 'bootstrap/js/src/collapse';
 
 import { Link, NavLink } from 'react-router-dom';
-import {
-  getTokenData,
-  isAuthenticated,
-  removeAuthData,
-} from 'util/requests';
 import { useEffect, useContext } from 'react';
 import history from 'util/history';
 import { AuthContext } from 'AuthContext';
+import { getTokenData, isAuthenticated } from 'util/auth';
+import { removeAuthData } from 'util/storage';
 
 const Navbar = () => {
 
