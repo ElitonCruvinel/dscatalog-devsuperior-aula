@@ -11,7 +11,7 @@ type Props = {
 const ProductCrudCard = ({ product }: Props) => {
   return (
     <div className="base-card product-crud-card">
-      <div className="product-crud-card-top-cantainer">
+      <div className="product-crud-card-top-container">
         <img src={product.imgUrl} alt={product.name} />
       </div>
       <div className="product-crud-card-description">

@@ -3,13 +3,13 @@
   padding-bottom: 20px;
 }
 
-.product-crud-card-top-cantainer {
+.product-crud-card-top-container {
   text-align: center;
   padding: 16px 0;
   border-bottom: 1px solid #e1e1e1;
 }
 
-.product-crud-card-top-cantainer img {
+.product-crud-card-top-container img {
     width: 158px;
     height: 158px;
 }
@@ -55,8 +55,9 @@
     padding-bottom: 0;
   }
 
-  .product-crud-card-top-cantainer {
+  .product-crud-card-top-container {
     border-bottom: 0;
+    width: 200px;
     border-right: 1px solid #e1e1e1;
   }
 
