@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { Product } from 'types/product';
 import { SpringPage } from 'types/vendor/spring';
 import { requestBackend } from 'util/requests';
+import ProductFilter from 'components/ProductFilter';
 
 import './styles.css';
 
@@ -21,29 +22,28 @@ const List = () => {
       activePage: 0,
     });
 
-    const handlePageChange = (pageNumber: number) => {
-      setcontrolComponentsData({activePage: pageNumber});
-    }
+  const handlePageChange = (pageNumber: number) => {
+    setcontrolComponentsData({ activePage: pageNumber });
+  };
 
-    const getProducts = useCallback(() => {
-      const config: AxiosRequestConfig = {
-        method: 'GET',
-        url: '/products',
-        params: {
-          page: controlComponentsData.activePage,
-          size: 3,
-        },
-      };
-  
-      requestBackend(config).then((response) => {
-        setPage(response.data);
-      });
-    }, [controlComponentsData]);
+  const getProducts = useCallback(() => {
+    const config: AxiosRequestConfig = {
+      method: 'GET',
+      url: '/products',
+      params: {
+        page: controlComponentsData.activePage,
+        size: 3,
+      },
+    };
+
+    requestBackend(config).then((response) => {
+      setPage(response.data);
+    });
+  }, [controlComponentsData]);
 
   useEffect(() => {
     getProducts();
   }, [getProducts]);
-
 
   return (
     <div className="product-crud-container">
@@ -53,15 +53,12 @@ const List = () => {
             ADICIONAR
           </button>
         </Link>
-        <div className="base-card product-filter-container">Search Bar</div>
+        <ProductFilter />
       </div>
       <div className="row">
         {page?.content.map((product) => (
           <div key={product.id} className="col-sm-6 col-md-12">
-            <ProductCrudCard
-              product={product}
-              onDelete={getProducts}
-            />
+            <ProductCrudCard product={product} onDelete={getProducts} />
           </div>
         ))}
       </div>
