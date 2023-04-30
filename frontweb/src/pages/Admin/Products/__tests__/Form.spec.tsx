@@ -108,8 +108,6 @@ describe('Product form create tests', () => {
             userEvent.type(priceInput, '5000.12');
             userEvent.type(imgUrlInput, 'https://raw.githubusercontent.com/devsuperior/dscatalog-resources/master/backend/img/1-big.jpg');
             userEvent.type(descriptionInput, 'Computador muito bom');
-
-            userEvent.click(submitButton);
         });
 
         await waitFor(() => {
